@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center text-center">
+        <div class="col-md-8">
+            <h1 class="display-4 mb-4">Welcome to Language Learning</h1>
+            <p class="lead">Master new languages through interactive learning</p>
+        </div>
+    </div>
+
+    {% if current_user.is_authenticated %}
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Flashcards</h5>
+                        <p class="card-text">Practice vocabulary with interactive flashcards</p>
+                        <a href="#flashcards" class="btn btn-primary">Start Learning</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Quizzes</h5>
+                        <p class="card-text">Test your knowledge and earn points</p>
+                        <a href="#quiz" class="btn btn-primary">Take a Quiz</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Pronunciation</h5>
+                        <p class="card-text">Perfect your accent with speech practice</p>
+                        <a href="#pronunciation" class="btn btn-primary">Practice Speaking</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="row mt-5">
+            <div class="col-md-6 offset-md-3 text-center">
+                <p>Join our community to start learning!</p>
+                <div class="mt-4">
+                    <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg me-3">Register</a>
+                    <a href="{{ url_for('auth.login') }}" class="btn btn-outline-primary btn-lg">Login</a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
